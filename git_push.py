@@ -30,7 +30,8 @@ num_files = len(local_files)
 count=0
 for f in local_files:
     count=count+1
-    print(count,num_files)
+    #print(count,num_files)
+    print(f"{count} {num_files}", end="\r")
     full_path = os.path.join(repo_path,f)
     with open(full_path,"r",encoding="utf-8",errors="ignore") as file: content = file.read()
     local_hash = hashlib.sha1(content.encode()).hexdigest()
