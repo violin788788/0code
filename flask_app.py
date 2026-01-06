@@ -3,7 +3,7 @@
 
 from flask import Flask, render_template, request, send_file
 from pydub import AudioSegment
-import os,webbrowser,subprocess
+import os,webbrowser,subprocess,sys
 #from flask import Flask, render_template
 app = Flask(__name__)
 os.makedirs('uploads', exist_ok=True)
@@ -34,10 +34,19 @@ def run():
 python anywhere does not get this last bit of code
 will not work in python anywhere with this
 """
-chrome_path = r"A:\Program Files\Google\Chrome\Application\chrome.exe"
+
+# Path to your Chrome executable
+chrome_path = "C:/Program Files/Google/Chrome/Application/chrome.exe"  # Adjust this path if needed
+# URL you want to open
+url = "http://127.0.0.1:5000/"
+# Run Chrome with incognito mode and the URL
+subprocess.Popen([chrome_path, '--incognito', url])
 #subprocess.Popen([chrome_path, "http://127.0.0.1:5000"])
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
 """
 python anywhere does not get this last bit of code
 will not work in python anywhere with this
