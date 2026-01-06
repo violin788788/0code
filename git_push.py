@@ -47,9 +47,12 @@ for f in local_files:
     else:
         repo.create_file(f, commit_msg, content)
         print(f"Created {f}")
-        """
+      
 # Delete remaining remote files (these do not exist locally)
 for f, file_obj in remote_files.items():
-    repo.delete_file(f, f"Remove {f}", file_obj.sha)
-    print(f"Deleted {f}")
-    """
+    print(f" {num_files}", end="\r")
+    try: 
+        repo.delete_file(f, f"Remove {f}", file_obj.sha)
+        print(f"Deleted {f}")
+    except:
+        continue
