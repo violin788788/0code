@@ -41,4 +41,4 @@ for f, file_obj in remote_files.items():
         repo.delete_file(f, f"Remove {f}", file_obj.sha)
         print(f"Deleted {f}")
     else:
-        print(f"Skipped {f} (is a directory)")
+        print(f"Skipped {f} (directory, not a file)")
