@@ -10,7 +10,10 @@ with open(token_file,"r") as f: token = f.read().strip()
 g = Github(token)
 repo = g.get_user().get_repo(repo_name)
 
+count = 0
 for f in os.listdir(repo_path):
+    count=count+1
+    print(count,len(repo_path))
     full_path = os.path.join(repo_path,f)
     if os.path.isfile(full_path) and "." in f:
         with open(full_path,"r",encoding="utf-8",errors="ignore") as file: content = file.read()
