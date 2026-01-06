@@ -26,7 +26,11 @@ def local_files_in_root():
 remote_files = get_all_remote_files()
 local_files = local_files_in_root()
 
+num_files = len(local_files)
+count=0
 for f in local_files:
+    count=count+1
+    print(count,num_files)
     full_path = os.path.join(repo_path,f)
     with open(full_path,"r",encoding="utf-8",errors="ignore") as file: content = file.read()
     local_hash = hashlib.sha1(content.encode()).hexdigest()
@@ -42,8 +46,9 @@ for f in local_files:
     else:
         repo.create_file(f, commit_msg, content)
         print(f"Created {f}")
-
+        """
 # Delete remaining remote files (these do not exist locally)
 for f, file_obj in remote_files.items():
     repo.delete_file(f, f"Remove {f}", file_obj.sha)
     print(f"Deleted {f}")
+    """
