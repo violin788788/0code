@@ -30,7 +30,6 @@ def on_mouse_up(event):
     root.destroy()
     img = ImageGrab.grab(bbox=(x1, y1, x2, y2))
     save_directory = r"A:\Users\-\Downloads"
-    
 
     save_file = os.path.join(save_directory, f"{filename}.png")
     img.save(save_file)
