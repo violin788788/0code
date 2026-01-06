@@ -1,3 +1,2 @@
 @echo off
-python screenshot.py
-pause
+start "" "A:\Users\-\AppData\Local\Programs\Python\Python37\pythonw.exe" "screenshot.py"
