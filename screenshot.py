@@ -49,3 +49,4 @@ canvas.bind("<B1-Motion>", on_mouse_drag)
 canvas.bind("<ButtonRelease-1>", on_mouse_up)
 
 root.mainloop()
+       
