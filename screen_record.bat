@@ -1,3 +1,2 @@
 @echo off
-python screen_record.py
-pause
+start "" "A:\Users\-\AppData\Local\Programs\Python\Python37\pythonw.exe" "screen_record.py"
