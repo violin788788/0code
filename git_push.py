@@ -10,19 +10,27 @@ with open(token_file,"r") as f: token = f.read().strip()
 g = Github(token)
 repo = g.get_user().get_repo(repo_name)
 
-# Get local files to be pushed (only files with a "." in the root folder)
-local_files = [f for f in os.listdir(repo_path) if os.path.isfile(os.path.join(repo_path,f)) and "." in f]
+def get_all_remote_files(path=""):
+    files = {}
+    contents = repo.get_contents(path)
+    for item in contents:
+        if item.type == "file":
+            files[item.path] = item
+        elif item.type == "dir":
+            files.update(get_all_remote_files(item.path))
+    return files
 
-# Get remote files from the GitHub repo (root level only)
-remote_files = {f.path: f for f in repo.get_contents("")}
+def local_files_in_root():
+    return [f for f in os.listdir(repo_path) if os.path.isfile(os.path.join(repo_path,f)) and "." in f]
 
-# Update or create files on GitHub
+remote_files = get_all_remote_files()
+local_files = local_files_in_root()
+
 for f in local_files:
     full_path = os.path.join(repo_path,f)
     with open(full_path,"r",encoding="utf-8",errors="ignore") as file: content = file.read()
     local_hash = hashlib.sha1(content.encode()).hexdigest()
     commit_msg = f"Sync {f}"
-    
     if f in remote_files:
         remote_hash = hashlib.sha1(remote_files[f].decoded_content).hexdigest()
         if local_hash != remote_hash:
@@ -30,15 +38,12 @@ for f in local_files:
             print(f"Updated {f}")
         else:
             print(f"Skipped {f} (unchanged)")
-        del remote_files[f]  # Mark this file as processed
+        del remote_files[f]
     else:
         repo.create_file(f, commit_msg, content)
         print(f"Created {f}")
 
-# Delete files on GitHub that do not exist locally (and ensure it's not a directory)
+# Delete remaining remote files (these do not exist locally)
 for f, file_obj in remote_files.items():
-    if file_obj.type == "file":  # Only delete files, not directories
-        repo.delete_file(f, f"Remove {f}", file_obj.sha)
-        print(f"Deleted {f}")
-    else:
-        print(f"Skipped {f} (directory, not a file)")
+    repo.delete_file(f, f"Remove {f}", file_obj.sha)
+    print(f"Deleted {f}")
