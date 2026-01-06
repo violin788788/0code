@@ -47,10 +47,12 @@ for f in local_files:
     else:
         repo.create_file(f, commit_msg, content)
         print(f"Created {f}")
-      
+
+count=0          
 # Delete remaining remote files (these do not exist locally)
 for f, file_obj in remote_files.items():
-    print(f" {num_files}", end="\r")
+    count=count+1
+    print(f"{count} {num_files}", end="\r")
     try: 
         repo.delete_file(f, f"Remove {f}", file_obj.sha)
         print(f"Deleted {f}")
