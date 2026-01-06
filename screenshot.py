@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import ImageGrab
+import os
 
 filename = input("Enter screenshot name (without extension): ")
 
@@ -28,10 +29,17 @@ def on_mouse_up(event):
     y2 = max(start_y, event.y)
     root.destroy()
     img = ImageGrab.grab(bbox=(x1, y1, x2, y2))
-    img.save(f"{filename}.png")
+    save_directory = r"A:\Users\-\Downloads"
+    
+
+    save_file = os.path.join(save_directory, f"{filename}.png")
+    img.save(save_file)
+
+
+    #img.save(f"{filename}.png")
 
 canvas.bind("<ButtonPress-1>", on_mouse_down)
 canvas.bind("<B1-Motion>", on_mouse_drag)
 canvas.bind("<ButtonRelease-1>", on_mouse_up)
-
 root.mainloop()
+os.startfile(r"A:\Users\-\Downloads")
