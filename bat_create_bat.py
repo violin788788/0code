@@ -1,0 +1,15 @@
+def create_bat_from_txt(txt_file):
+    try:
+        with open(txt_file, 'r') as file:
+            python_script = file.read().strip()
+        bat_file=python_script.replace(".py",".bat")
+        with open(bat_file, 'w') as bat:
+            bat.write(f'@echo off\n')
+            bat.write(f'python {python_script}\n')
+            bat.write(f'pause\n')
+        print(f"Batch file '{bat_file}' created successfully to run {python_script}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+txt_file = "bat_file_to_make_bat_of.txt"
+create_bat_from_txt(txt_file)
