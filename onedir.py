@@ -1,22 +1,9 @@
-import os,shutil,subprocess
-from winshell import shortcut,desktop
-APP_NAME="screen_record"
-CURRENT_DRIVE=os.path.splitdrive(os.getcwd())[0]
-INSTALL_DIR=os.path.join(CURRENT_DRIVE,r"\Program Files"+"\\"+APP_NAME)
-PY_FILE=APP_NAME+".pyw"
-ICON_FILE=APP_NAME+".ico"
-print("Running PyInstaller to create onedir EXE")
-subprocess.run(["pyinstaller","--onedir","--icon="+ICON_FILE,PY_FILE],check=True)
-DIST_FOLDER=os.path.join("dist",os.path.splitext(PY_FILE)[0])
-print(f"Copying onedir folder {DIST_FOLDER} to {INSTALL_DIR}")
-if os.path.exists(INSTALL_DIR):
-    shutil.rmtree(INSTALL_DIR)
-shutil.copytree(DIST_FOLDER,INSTALL_DIR)
-MAIN_EXE=os.path.join(INSTALL_DIR,os.path.splitext(PY_FILE)[0]+".exe")
-SHORTCUT_PATH=os.path.join(desktop(),APP_NAME+".lnk")
-print(f"Creating desktop shortcut at {SHORTCUT_PATH}")
-with shortcut(SHORTCUT_PATH) as link:
-    link.path=MAIN_EXE
-    link.working_directory=INSTALL_DIR
-    link.description=APP_NAME
-print("Installation complete")
+import PyInstaller.__main__
+import os
+file_name = "screenshot"
+file_extension = ".py"
+icon_name = file_name + ".ico"
+script = file_name + file_extension
+PyInstaller.__main__.run([script,'--onedir','--name=' + file_name,'--icon=' + icon_name,'--windowed'])
+dist_folder = os.path.join(os.getcwd(), 'dist', file_name)
+os.startfile(dist_folder)
