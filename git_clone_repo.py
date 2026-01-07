@@ -1,6 +1,6 @@
 import os
 import subprocess
-file_path = 'git_repo_to_install.txt'
+file_path = 'git_clone_repo.txt'
 try:
     with open(file_path, 'r') as file:
         repo_name = file.read().strip().replace("\n", "").replace(" ", "")
