@@ -1,7 +1,12 @@
 from PIL import Image
 
 # Open an image
-image = Image.open("screenshot.png")
+image_name = "screen_record"
+image_extension = "png"
+image_file = image_name+"."+image_extension
+
+image = Image.open(image_file)
 
 # Save as .ico format
-image.save("screenshot.ico", format="ICO")
+ico_file = image_name+".ico"
+image.save(ico_file, format="ICO")
