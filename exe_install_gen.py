@@ -19,6 +19,11 @@ def generate_onefile(file_name):
     dist_folder = os.path.join(os.getcwd(), 'dist', out_name)
     os.startfile(dist_folder)
 
+def copy_to_program_files(file_name):
+    
+    
+    #A:\Users\-\0code\dist\screenshot
+
 file_name = "screenshot"
-generate_onedir(file_name)
-generate_onefile(file_name)
+#generate_onedir(file_name)
+#generate_onefile(file_name)
