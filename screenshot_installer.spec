@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(
-    ['screenshot.pyw'],
+    ['screenshot.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('A:\\Users\\-\\0code\\screenshot.ico', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -41,5 +41,4 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['screenshot.ico'],
 )
