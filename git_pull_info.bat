@@ -1,3 +1,3 @@
 @echo off
-python git_pull_info.py
+python git_pull_0code.py
 pause
