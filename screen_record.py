@@ -57,7 +57,7 @@ final=f"A:\\Users\\-\\Downloads\\{name}.mp4"
 subprocess.call(f'ffmpeg -y -i "{crop}" -c:v libx264 -pix_fmt yuv420p -movflags +faststart "{final}"',shell=True)
 
 cv2.destroyAllWindows()
-
+os.delete('screen_record.mp4')
 os.startfile(os.path.dirname(final))
 
 #os.startfile(os.path.dirname(os.path.join("A:\\Users\\-\\Downloads", f"{name_capture}.mp4")))
