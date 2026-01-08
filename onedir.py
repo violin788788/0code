@@ -10,10 +10,6 @@ def generate_onedir(file_name):
     dist_folder = os.path.join(os.getcwd(), 'dist', file_name)
     os.startfile(dist_folder)
 
-file_name = "screenshot"
-generate_onedir(file_name)
-
-
 def generate_onefile(file_name):
     file_extension = ".py"
     icon_name = file_name + ".ico"
@@ -23,5 +19,17 @@ def generate_onefile(file_name):
     dist_folder = os.path.join(os.getcwd(), 'dist', out_name)
     os.startfile(dist_folder)
 
-file_name = "screenshot"
-generate_onefile(file_name)
+file_name = "record"
+
+file=file_name+".py"
+ico = file_name+".ico"
+
+#command = "pyinstaller --onefile --icon="+ico+" "+file
+command = "pyinstaller --onedir --icon="+ico+" "+file
+os.system(command)
+
+
+#file_name = "record"
+generate_onedir(file_name)
+
+os.startfile("dist")
