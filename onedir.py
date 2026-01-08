@@ -25,7 +25,7 @@ file=file_name+".py"
 ico = file_name+".ico"
 
 #command = "pyinstaller --onefile --icon="+ico+" "+file
-command = "pyinstaller --onedir --icon="+ico+" "+file
+command = "pyinstaller --onefile --icon="+ico+" "+file
 os.system(command)
 
 
