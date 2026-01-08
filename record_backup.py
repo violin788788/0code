@@ -30,8 +30,9 @@ while fx==-1 or drag:
 cv2.destroyAllWindows()
 x=min(ix,fx);y=min(iy,fy);w=abs(fx-ix);h=abs(fy-iy)
 region={"left":x,"top":y,"width":w,"height":h}
-save_directory=r"A:\Users\-\Downloads"
-out_file=save_directory+"\\"+name+".mp4"
+save_directory=os.path.join(os.path.expanduser("~"),"Downloads")
+os.makedirs(save_directory,exist_ok=True)
+out_file=os.path.join(save_directory,name+".mp4")
 out=cv2.VideoWriter(out_file,cv2.VideoWriter_fourcc(*"mp4v"),FPS,(w,h))
 frame_time=1/FPS
 next_time=time.time()
