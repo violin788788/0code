@@ -1,5 +1,5 @@
 import PyInstaller.__main__
-import os
+import shutil, os,sys
 
 def generate_onedir(file_name):
     #file_name = "screenshot"
@@ -19,17 +19,30 @@ def generate_onefile(file_name):
     dist_folder = os.path.join(os.getcwd(), 'dist', out_name)
     os.startfile(dist_folder)
 
-file_name = "screenshot"
+file_name = "run"
 
 file=file_name+".py"
 ico = file_name+".ico"
-
 #command = "pyinstaller --onefile --icon="+ico+" "+file
 command = "pyinstaller --onefile --icon="+ico+" "+file
 os.system(command)
-
-
 #file_name = "record"
 generate_onedir(file_name)
+#copy to program files
 
-os.startfile("dist")
+cwd = os.getcwd()
+drive = os.path.splitdrive(os.getcwd())[0]+"\\"
+src = os.path.join(cwd, "dist", file_name)+".exe"
+dst = os.path.join(drive, "Program Files", file_name)+".exe"
+
+try:
+    shutil.copy2(src, dst)
+    print(f"Copied {src} -> {dst}")
+except PermissionError:
+    print("Permission denied: run as Administrator")
+except FileNotFoundError:
+    print(f"File not found: {src}")
+print("exe copied to program files")
+
+
+#os.startfile("dist")
