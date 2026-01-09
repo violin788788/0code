@@ -11,4 +11,4 @@ def replace_newlines(file_path):
         file.write(content)
 
 # Replace 'your_file.html' with your actual file name
-replace_newlines('record.py')
+replace_newlines('run.py')
