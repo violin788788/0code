@@ -2,7 +2,7 @@ from github import Github
 import os, hashlib
 
 repo_path = r"A:\Users\-\0code"
-token_file = r"A:\Users\-\0code\git_token\git_token.txt"
+token_file = r"A:\Users\-\0code\token_git\token_git.txt"
 github_user = "violin788788"
 repo_name = "0code"
 
