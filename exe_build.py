@@ -19,35 +19,29 @@ def generate_onefile(file_name):
     dist_folder = os.path.join(os.getcwd(), 'dist', out_name)
     os.startfile(dist_folder)
 """
-file_name = "run"
 
+
+file_without_py = "run"
+
+
+
+file_with_py=file_without_py+".py"
 cwd = os.getcwd()
-if ".py" not in file_name:
-    file_name=file_name+".py"
-ico_name = file_name+".ico"
+ico_name = file_without_py+".ico"
 ico_directory = os.path.join(cwd,"icos")
 ico = os.path.join(ico_directory,ico_name)
-
 #command = "pyinstaller --onefile --icon="+ico+" "+file
-command = "pyinstaller --onefile --icon="+ico+" "+file
+command = "pyinstaller --onefile --icon="+ico+" "+file_with_py
 os.system(command)
 #file_name = "record"
 #generate_onedir(file_name)
 #copy to program files
-
 cwd = os.getcwd()
 drive = os.path.splitdrive(os.getcwd())[0]+"\\"
-src = os.path.join(cwd, "dist", file_name)+".exe"
-dst = os.path.join(drive, "Program Files", file_name)+".exe"
-
-try:
-    shutil.copy2(src, dst)
-    print(f"Copied {src} -> {dst}")
-except PermissionError:
-    print("Permission denied: run as Administrator")
-except FileNotFoundError:
-    print(f"File not found: {src}")
-print("exe copied to program files")
-
-
+exe_file = file_without_py+".exe"
+code_directory = r"A:\Users\-\0code"
+src=os.path.join(code_directory,"dist",exe_file)
+dst = os.path.join(drive, "Program Files", exe_file)
+shutil.copy2(src, dst)
 os.startfile("dist")
+os.startfile(os.path.join(drive, "Program Files"))
