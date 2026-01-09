@@ -1,7 +1,7 @@
 from PIL import Image
 
 # Open an image
-image_name = "screen_record"
+image_name = "run"
 image_extension = "png"
 image_file = image_name+"."+image_extension
 
