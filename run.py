@@ -2,12 +2,13 @@ import tkinter as tk
 from tkinter import messagebox
 import os
 def run_code():
-    filename=code_input.get("1.0",tk.END).strip()
-    if not filename:messagebox.showerror("Error","Please enter a filename");return
-    if not filename.endswith(".py"):filename+=".py"
-    if not os.path.exists(filename):messagebox.showerror("Error",f"File '{filename}' does not exist");return
-    directory = r"A:\Users\-\0code\\"
-    cmd = "python "+directory+filename
+    input_file=code_input.get("1.0",tk.END).strip()
+    if ".py" not in input_file:
+        input_file = input_file+".py"
+
+    code_directory = r"A:\Users\-\0code"
+    file_to_run = os.path.join(code_directory,input_file)
+    cmd = "python "+file_to_run
     print(cmd)
     os.system(cmd)
     #os.system(f"python \"{filename}\"")
