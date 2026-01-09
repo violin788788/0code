@@ -19,7 +19,7 @@ def generate_onefile(file_name):
     dist_folder = os.path.join(os.getcwd(), 'dist', out_name)
     os.startfile(dist_folder)
 
-file_name = "record"
+file_name = "screenshot"
 
 file=file_name+".py"
 ico = file_name+".ico"
