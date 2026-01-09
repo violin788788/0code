@@ -1,6 +1,6 @@
 import PyInstaller.__main__
 import shutil, os,sys
-
+"""
 def generate_onedir(file_name):
     #file_name = "screenshot"
     file_extension = ".py"
@@ -18,16 +18,21 @@ def generate_onefile(file_name):
     PyInstaller.__main__.run([script,'--onefile','--name=' + out_name,'--icon=' + icon_name,'--windowed'])
     dist_folder = os.path.join(os.getcwd(), 'dist', out_name)
     os.startfile(dist_folder)
-
+"""
 file_name = "run"
 
-file=file_name+".py"
-ico = file_name+".ico"
+cwd = os.getcwd()
+if ".py" not in file_name:
+    file_name=file_name+".py"
+ico_name = file_name+".ico"
+ico_directory = os.path.join(cwd,"icos")
+ico = os.path.join(ico_directory,ico_name)
+
 #command = "pyinstaller --onefile --icon="+ico+" "+file
 command = "pyinstaller --onefile --icon="+ico+" "+file
 os.system(command)
 #file_name = "record"
-generate_onedir(file_name)
+#generate_onedir(file_name)
 #copy to program files
 
 cwd = os.getcwd()
@@ -45,4 +50,4 @@ except FileNotFoundError:
 print("exe copied to program files")
 
 
-#os.startfile("dist")
+os.startfile("dist")
