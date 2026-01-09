@@ -6,7 +6,10 @@ def run_code():
     if not filename:messagebox.showerror("Error","Please enter a filename");return
     if not filename.endswith(".py"):filename+=".py"
     if not os.path.exists(filename):messagebox.showerror("Error",f"File '{filename}' does not exist");return
-    os.system(f"python \"{filename}\"")
+    directory = r"A:\Users\-\0code\\"
+    cmd = "python "+directory+filename
+    os.system(cmd)
+    #os.system(f"python \"{filename}\"")
 root=tk.Tk()
 root.title("Python Runner")
 root.geometry("400x200")
