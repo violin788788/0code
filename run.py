@@ -8,6 +8,7 @@ def run_code():
     if not os.path.exists(filename):messagebox.showerror("Error",f"File '{filename}' does not exist");return
     directory = r"A:\Users\-\0code\\"
     cmd = "python "+directory+filename
+    print(cmd)
     os.system(cmd)
     #os.system(f"python \"{filename}\"")
 root=tk.Tk()
