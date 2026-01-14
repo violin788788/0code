@@ -10,7 +10,7 @@ print(cwd)
 # Define the Git commands
 commands = [
     "git add -A",
-    'git commit -m "modify/create/delete files+folders"'
+    'git commit -m "update/create/delete files+folders"'
 ]
 
 # Execute the commands in the shell using os.system()
