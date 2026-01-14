@@ -20,7 +20,7 @@ for command in commands:
 with open('token.txt', 'r') as file:
     token = file.read().strip()  # Read the token and remove any extra whitespace
 # Step 2: Set up the GitHub repository URL with the token for authentication
-repo_url = f"https://{token}@github.com/violin788788/info34.git"
+repo_url = f"https://{token}@github.com/violin788788/0code.git"
 
 # Step 3: Execute the Git command (force push)
 try:
@@ -39,7 +39,7 @@ create main branch
 git checkout -b main
 
 add remote
-git remote add origin https://github.com/violin788788/info34.git
+git remote add origin https://github.com/violin788788/0code.git
 
 stage all changes
 git add -A
