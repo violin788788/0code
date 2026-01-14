@@ -1,10 +1,7 @@
 import tkinter as tk
 from tkinter.simpledialog import askstring
 from PIL import ImageGrab
-import os,subprocess,sys
-import getpass
-
-
+import os
 # --- 1. Create single root ---
 root = tk.Tk()
 root.withdraw()  # hide for input dialog
@@ -37,22 +34,11 @@ def on_mouse_up(event):
     cwd = os.getcwd()
     #cwd.replace("") replade basepath with..Downloads?
     cwd = os.getcwd()
-
-    drive = str(os.getenv('SystemDrive'))
-    drive = drive+"\\"
-    user = getpass.getuser()  # This works on Windows, macOS, Linux
-    print(drive)
-    print(user)
-    save_directory = os.path.join(drive,"Users",user,"Downloads")
-    print(save_directory)
-
-    save_file = os.path.join(save_directory, filename+".png")
-    print("save_file",save_file)
+    current_folder = os.path.basename(cwd)
+    save_directory = cwd.replace(current_folder,"Downloads")
+    save_file = os.path.join(save_directory, f"{filename}.png")
     img.save(save_file)
-    #os.startfile(save_directory)  # open folder
-    subprocess.run(["explorer", save_directory])
-    print(save_directory)
-
+    os.startfile(save_directory)  # open folder
 canvas.bind("<ButtonPress-1>", on_mouse_down)
 canvas.bind("<B1-Motion>", on_mouse_drag)
 canvas.bind("<ButtonRelease-1>", on_mouse_up)
