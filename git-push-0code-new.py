@@ -1,7 +1,9 @@
+import os,subprocess,sys
+cwd = os.getcwd()
+basepath = os.path.dirname(cwd)
 
-
-import os,subprocess
-
+print(basepath)
+sys.exit()
 
 #"git push origin main --force"
 
