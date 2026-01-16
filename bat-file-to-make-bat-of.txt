@@ -1,1 +1,1 @@
-check_all_files
+git-master

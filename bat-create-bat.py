@@ -13,5 +13,7 @@ def create_bat_from_txt(txt_file):
     except Exception as e:
         print(f"Error: {e}")
 
-txt_file = "bat_file_to_make_bat_of.txt"
+txt_file = "bat-file-to-make-bat-of.txt"
+
+
 create_bat_from_txt(txt_file)
