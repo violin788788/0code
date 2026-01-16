@@ -1,10 +1,10 @@
 import subprocess
 import os
-repos=["info34","vote34","trading",""]
+cwd=os.getcwd()
+repos=["info34","vote34","trading"]
 commands=["git status"]
 for repo in repos:
-    if not os.path.isdir(repo):
-        continue
-    print("--- Running in",repo,"---")
+    check=os.path.join(cwd,repo)
+    print("--- Running in",check,"---")
     for command in commands:
-        subprocess.run(command,shell=True,cwd=repo)
+        subprocess.run(command,shell=True,cwd=check)
