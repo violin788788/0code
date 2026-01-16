@@ -32,7 +32,7 @@ except subprocess.CalledProcessError as e:
     print(f"Error occurred: {e}")
 
 url = r"https://github.com/violin788788/"+directory_name
-chrome_path = r"A:\Program Files\Google\Chrome\Application\chrome.exe"
+chrome_path = r"A:\Program Files\Mozilla Firefox\firefox.exe"
 subprocess.run([chrome_path, "--incognito", url])
 
 #os.startfile(r"https://github.com/violin788788/0code")
