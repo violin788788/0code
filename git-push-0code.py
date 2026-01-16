@@ -33,7 +33,7 @@ except subprocess.CalledProcessError as e:
 
 url = r"https://github.com/violin788788/"+directory_name
 chrome_path = r"A:\Program Files\Mozilla Firefox\firefox.exe"
-subprocess.run([chrome_path, "--incognito", url])
+subprocess.run([chrome_path, url])
 
 #os.startfile(r"https://github.com/violin788788/0code")
 
