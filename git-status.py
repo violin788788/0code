@@ -1,20 +1,10 @@
+import subprocess
 import os
-
-
-"""
-commands = [
-    "git add -A",
-    'git commit -m "update/create/delete files+folders"'
-]
-
-"""
-
-commands = [
-
-			"git status"
-
-]
-
-# Execute the commands in the shell using os.system()
-for command in commands:
-    os.system(command)
+repos=["info34","vote34","trading",""]
+commands=["git status"]
+for repo in repos:
+    if not os.path.isdir(repo):
+        continue
+    print("--- Running in",repo,"---")
+    for command in commands:
+        subprocess.run(command,shell=True,cwd=repo)
