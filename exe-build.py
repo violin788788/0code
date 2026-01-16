@@ -1,7 +1,7 @@
 import PyInstaller.__main__
 import shutil, os,sys,subprocess
 
-file_without_py = "screenshot"
+file_without_py = "git-status"
 #onefile_or_onedir = "onedir"
 onefile_or_onedir = "onefile"
 cmd_line = "no"  #"yes" or "no"
